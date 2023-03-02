@@ -40,7 +40,7 @@
   ==========================
   
   ## Questions
-  For any questions or comments, please reach out to me at JosephReis646@gmail.com. You can also visit my [GitHub profile](https://github.com/JosephReis644) for additional information.
+  For any questions or comments, please reach out to me at JosephReis646@gmail.com. You can also visit my [GitHub profile](https://github.com/JosephReis646) for additional information.
   
   ## Github
   https://github.com/JosephReis646/Node.Js-Professional-README-Generator

@@ -60,7 +60,67 @@ function writeToFile(fileName, data) {
   }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then((answers) => {
+      let readmeContent = `
+  # ${answers.title}
+  
+  ## Description
+  ${answers.description}
+  
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+  
+  ## Installation
+  ${answers.installation}
+  
+  ## Usage
+  ${answers.usage}
+  
+  ## License
+  ${answers.license}
+  
+  ## Contributing
+  ${answers.contributing}
+  
+  ## Tests
+  ${answers.tests}
+  
+  ## Questions
+  For any questions or comments, please reach out to me at ${answers.email}. You can also visit my [GitHub profile](https://github.com/${answers.github}) for additional information.
+  `;
+  
+  switch (answers.license) {
+    case 'MIT':
+      readmeContent = readmeContent.concat(
+        '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+      );
+      break;
+    case 'GPLv3':
+      readmeContent = readmeContent.concat(
+        '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+      );
+      break;
+    case 'Apache':
+      readmeContent = readmeContent.concat(
+        '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+      );
+      break;
+    case 'BSD 3-Clause':
+      readmeContent = readmeContent.concat(
+        '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)'
+      );
+      break;
+    default:
+      break;
+  }
+});
+}
 
 // Function call to initialize app
 init();

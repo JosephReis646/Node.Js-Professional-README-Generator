@@ -83,7 +83,30 @@ function init() {
   ${answers.usage}
   
   ## License
-  ${answers.license}
+  ${answers.license}`;
+
+  switch (answers.license) {
+    case 'MIT':
+      readmeContent = `${readmeContent}
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+      break;
+    case 'GPLv3':
+      readmeContent = `${readmeContent}
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`;
+      break;
+    case 'Apache':
+      readmeContent = `${readmeContent}
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+      break;
+    case 'BSD 3-Clause':
+      readmeContent = `${readmeContent}
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)`;
+      break;
+    default:
+      break;
+  }
+
+  readmeContent = `${readmeContent}
   
   ## Contributing
   ${answers.contributing}
@@ -94,31 +117,7 @@ function init() {
   ## Questions
   For any questions or comments, please reach out to me at ${answers.email}. You can also visit my [GitHub profile](https://github.com/${answers.github}) for additional information.
   `;
-  
-  switch (answers.license) {
-    case 'MIT':
-      readmeContent = readmeContent.concat(
-        '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-      );
-      break;
-    case 'GPLv3':
-      readmeContent = readmeContent.concat(
-        '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
-      );
-      break;
-    case 'Apache':
-      readmeContent = readmeContent.concat(
-        '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
-      );
-      break;
-    case 'BSD 3-Clause':
-      readmeContent = readmeContent.concat(
-        '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)'
-      );
-      break;
-    default:
-      break;
-  }
+  writeToFile('README.md', readmeContent);
 });
 }
 
